@@ -40,9 +40,8 @@ def download_twitter_video(url):
         url (str): The twitter post URL to download from
     """
 
-    api_url = f"https://twitsave.com/info?url={url}"
-
-    response = requests.get(api_url)
+    api_url = f"https://savetwitter.net/api/ajaxSearch?q={url}&lang=zh-cn"
+    response = requests.post(api_url)
     data = bs4.BeautifulSoup(response.text, "html.parser")
     download_button = data.find_all("div", class_="origin-top-right")[0]
     quality_buttons = download_button.find_all("a")

@@ -52,7 +52,7 @@ def upload_to_minio(file_temp_prefix: str):
 
 # Twitter downloads mp4 to m3u8
 def convert_mp4_to_m3u8(absolute_address: str, file_temp_prefix: str) -> None:
-    cmd = (f'ffmpeg -i {absolute_address} -c:v libx264 -c:a aac -hls_time 10 -hls_list_size 0 -hls_segment_filename '
+    cmd = (f'ffmpeg -i {absolute_address} -c:v libx264 -c:a aac -hls_time 5 -hls_list_size 0 -hls_segment_filename '
            f'"{mp4_to_m3u8_output_path}{file_temp_prefix}_segment_%d.ts" '
            f'{mp4_to_m3u8_output_path}{file_temp_prefix}.m3u8')
     subprocess.call(cmd, shell=True)

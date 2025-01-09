@@ -3,9 +3,9 @@ import uuid
 import glob
 from configparser import Error
 import pathlib
-from minio import Minio
+from workflow.resource_operation import Minio
 import os
-from minio.error import S3Error
+from workflow.resource_operation import S3Error
 
 twitter_mp4_file_path = '/Users/kangoshayne/Downloads/x/'
 mp4_to_m3u8_output_path = '/Users/kangoshayne/Downloads/m3u8/'

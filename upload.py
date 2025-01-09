@@ -1,5 +1,5 @@
 import subprocess
-from minio import Minio
+
 
 # client = Minio(endpoint='103.178.57.34:9000', access_key='Qw3fq14h5wD1kNVYvXnq',
 #                secret_key='IOtgeoZwlmgSYamrNviaTnrndvrPEKf91onYXsIJ', secure=False  # 如果是 HTTPS 连接，则设置为 True

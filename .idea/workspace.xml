@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29cbbd40-1a0f-4159-b2ee-1df25ac4b3f2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements-dev.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/workflow.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +33,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/PythonProject/twitter-download/app",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -46,7 +44,12 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\PythonProject\twitter-download\app" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\PythonProject\twitter-download\core" />
+      <recent name="E:\PythonProject\twitter-download\app" />
       <recent name="E:\PythonProject\twitter-download" />
       <recent name="E:\PythonProject\twitter-download\entity" />
       <recent name="E:\PythonProject\twitter-download\workflow" />
@@ -138,7 +141,7 @@
       <workItem from="1735277936209" duration="82000" />
       <workItem from="1735278036904" duration="482000" />
       <workItem from="1736330764183" duration="2308000" />
-      <workItem from="1736385719118" duration="18850000" />
+      <workItem from="1736385719118" duration="19743000" />
     </task>
     <servers />
   </component>

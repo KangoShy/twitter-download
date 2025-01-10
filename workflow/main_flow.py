@@ -1,15 +1,14 @@
 import uuid
 import tempfile
-import download
 import os
 import subprocess
 import logging
 import resource_operation as mine_minio
 from sqlalchemy.orm import sessionmaker
 from workflow.storage_operation import engine
-from entity.mv_manage import MvManage
-from vo.manage_param import InsertManage
-from util.video import grab_frame
+from core.entity.mv_manage import MvManage
+from core.vo.manage_param import InsertManage
+from core.util.video import grab_frame
 
 
 def execute(address: str, bucket_name: str, param: InsertManage):
@@ -76,7 +75,3 @@ def insert_to_manage(m3u8_file: str, home_picture: str, param: InsertManage):
 
 if __name__ == '__main__':
     execute(address='x', bucket_name='test', param=InsertManage(blurb='jianjie', area='台湾省', class_tag='标签'))
-
-
-# if __name__ == '__main__':
-#     print(tempfile.gettempdir())

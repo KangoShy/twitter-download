@@ -3,7 +3,7 @@ import tempfile
 import os
 import subprocess
 import logging
-import resource_operation as mine_minio
+from workflow import resource_operation as mine_minio
 from sqlalchemy.orm import sessionmaker
 from workflow.storage_operation import engine
 from core.entity.mv_manage import MvManage

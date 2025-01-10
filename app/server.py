@@ -3,7 +3,10 @@ import logging
 from fastapi import FastAPI, APIRouter
 from fastapi.responses import JSONResponse
 
+from core.api.flow_start import router
+
 app = FastAPI()
+app.include_router(router)
 
 
 def init_app():

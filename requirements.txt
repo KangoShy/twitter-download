@@ -5,3 +5,4 @@ minio~=7.2.14
 moviepy~=2.1.1
 pillow~=10.4.0
 sqlalchemy~=2.0.36
+uvicorn

@@ -32,7 +32,10 @@ jobs:
 
       - name: delete dangling images
         run: |
-          docker rmi $(docker images -f "dangling=true" -q)
+          dangling_images=$(docker images -f "dangling=true" -q)
+          if [ -n "$dangling_images" ]; then
+              docker rmi $dangling_images
+          fi
           echo "Dangling images deleted"
 
       - name: Deploy to server via SSH
@@ -45,5 +48,8 @@ jobs:
           script: |
             docker pull abplanning/xvideos-download:latest
             docker rm -f xvideos-download || true
-            docker rmi $(docker images -f "dangling=true" -q)
+            dangling_images=$(docker images -f "dangling=true" -q)
+            if [ -n "$dangling_images" ]; then
+                docker rmi $dangling_images
+            fi
             docker run -d --name xvideos-download -p 8000:8000 abplanning/xvideos-download

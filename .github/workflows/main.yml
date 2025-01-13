@@ -1,0 +1,21 @@
+name: xvideos-download
+
+on:
+  push:
+    branches:
+      - release/1.0.0
+
+jobs:
+  run_demo_actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Docker build
+        run: |
+          docker build -t xvideos-download .
+
+      - name: Docker run
+        run:
+          docker rm -f xvideos-download || true && docker run -d --name xvideos-download -p 8000:8000 xvideos-download

@@ -1,55 +1,21 @@
-# 定义使用的 Docker 镜像
-image: python:3.12.8
+name: xvideos-download
 
-# 定义缓存策略以加速后续构建
-cache:
-  paths:
-    - .pip-cache/
+on:
+  push:
+    branches:
+      - release/1.0.0
 
-# 定义 stages，即 CI/CD 流水线的不同阶段
-stages:
-  - build
-  - test
-  - package
-  - deploy
+jobs:
+  run_demo_actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-# 定义 variables，设置全局变量（如果有的话）
-variables:
-  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.pip-cache"
+      - name: Docker build
+        run: |
+          docker build -t xvideos-download .
 
-# 安装依赖项的任务
-install_dependencies:
-  stage: build
-  script:
-    - pip install --cache-dir $PIP_CACHE_DIR -r requirements.txt
-  artifacts:
-    paths:
-      - .pip-cache/
-  only:
-    - branches
-
-# 打包任务
-package_app:
-  stage: package
-  script:
-    - python setup.py sdist bdist_wheel
-  artifacts:
-    paths:
-      - dist/
-  only:
-    - tags
-
-# 部署任务
-deploy_production:
-  stage: deploy
-  script:
-    - echo "Deploying to production..."
-    # 这里放置具体的部署命令，例如：
-    # - ssh user@server 'cd /path/to/project && git pull origin master && systemctl restart app'
-    # 或者使用 CI/CD 工具提供的 API 或 CLI 来部署应用。
-  environment:
-    name: production
-    url: https://your-production-url.com
-  only:
-    - master # 或者是你的主分支名
-  when: manual # 设置为手动触发
+      - name: Docker run
+        run:
+          docker rm -f xvideos-download || true && docker run -d --name xvideos-download -p 8000:8000 xvideos-download

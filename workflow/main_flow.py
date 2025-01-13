@@ -3,9 +3,9 @@ import tempfile
 import os
 import subprocess
 import logging
-from workflow import resource_operation as mine_minio
+from databases import minio as mine_minio
 from sqlalchemy.orm import sessionmaker
-from workflow.storage_operation import engine
+from databases.mysql import engine
 from core.entity.mv_manage import MvManage
 from core.vo.manage_param import InsertManage
 from core.util.video import grab_frame
@@ -13,13 +13,13 @@ from core.util.video import grab_frame
 
 def execute(address: str, bucket_name: str, param: InsertManage):
     """ download to location """
-    # location = download.x_download(address=address)
-    location = "D:/mp4s/x1.mp4"
-    if not os.path.exists(location) and not os.path.isfile(location):
+    # local_path = download.x_download(address=address)
+    local_path = "D:/mp4s/x1.mp4"
+    if not os.path.exists(local_path) and not os.path.isfile(local_path):
         raise FileNotFoundError()
 
-    if not location.lower().endswith('.mp4'):
-        raise Exception(f'There is not a mp4 file, local path is {location}')
+    if not local_path.lower().endswith('.mp4'):
+        raise Exception(f'There is not a mp4 file, local path is {local_path}')
 
     identification = str(uuid.uuid1())
     temp_dir = tempfile.gettempdir().replace('\\', '/') + "/"
@@ -32,7 +32,7 @@ def execute(address: str, bucket_name: str, param: InsertManage):
     match_prefix = temp_dir + identification
     home_picture = match_prefix + ".png"
     try:
-        grab_frame(location, home_picture)
+        grab_frame(local_path, home_picture)
         mine_minio.upload_to_minio(file_temp_prefix=match_prefix, bucket_name=bucket_name)
         logging.info(f'Local file upload success, prefix is {match_prefix}!')
     except Exception as e:
@@ -41,7 +41,7 @@ def execute(address: str, bucket_name: str, param: InsertManage):
 
     """ convert mp4 to m3u8 and 6 seconds each """
     try:
-        convert_mp4_to_m3u8(absolute_address=location, file_id=identification, output_address=temp_dir)
+        convert_mp4_to_m3u8(absolute_address=local_path, file_id=identification, output_address=temp_dir)
         logging.info(f'Local file convert to m3u8 already success, identification is {identification}!')
     except Exception as e:
         logging.error(f'Local file convert to m3u8 failed, message={e.message}')
@@ -71,7 +71,3 @@ def insert_to_manage(m3u8_file: str, home_picture: str, param: InsertManage):
     session.add(manage)
     session.commit()
     session.close()
-
-
-if __name__ == '__main__':
-    execute(address='x', bucket_name='test', param=InsertManage(blurb='jianjie', area='台湾省', class_tag='标签'))

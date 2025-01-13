@@ -33,7 +33,7 @@ jobs:
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
           script: |
             docker rm -f xvideos-download || true && docker run -d --name xvideos-download -p 8000:8000 xvideos-download

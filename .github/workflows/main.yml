@@ -26,6 +26,7 @@ jobs:
         with:
           context: .
           push: true
+          rm: true
           tags: abplanning/xvideos-download:latest
           cache-from: type=registry,ref=abplanning/xvideos-download:latest
 

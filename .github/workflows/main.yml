@@ -26,7 +26,9 @@ jobs:
         with:
           context: .
           push: true
+          rm: true
           tags: abplanning/xvideos-download:latest
+          cache-from: type=registry,ref=abplanning/xvideos-download:latest
 
       - name: Deploy to server via SSH
         uses: appleboy/ssh-action@v0.1.8

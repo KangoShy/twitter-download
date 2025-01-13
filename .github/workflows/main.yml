@@ -30,6 +30,11 @@ jobs:
           tags: abplanning/xvideos-download:latest
           cache-from: type=registry,ref=abplanning/xvideos-download:latest
 
+      - name: delete dangling images
+        run: |
+          docker rmi $(docker images -f "dangling=true" -q)
+          echo "Dangling images deleted"
+
       - name: Deploy to server via SSH
         uses: appleboy/ssh-action@v0.1.8
         with:
@@ -40,4 +45,5 @@ jobs:
           script: |
             docker pull abplanning/xvideos-download:latest
             docker rm -f xvideos-download || true
+            docker rmi $(docker images -f "dangling=true" -q)
             docker run -d --name xvideos-download -p 8000:8000 abplanning/xvideos-download

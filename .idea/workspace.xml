@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29cbbd40-1a0f-4159-b2ee-1df25ac4b3f2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/databases/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/main.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/main.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/python-app.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workflow/main_flow.py" beforeDir="false" afterPath="$PROJECT_DIR$/workflow/main_flow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workflow/resource_operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/databases/minio.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workflow/storage_operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/databases/mysql.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +163,7 @@
       <workItem from="1735277936209" duration="82000" />
       <workItem from="1735278036904" duration="482000" />
       <workItem from="1736330764183" duration="2308000" />
-      <workItem from="1736385719118" duration="25510000" />
+      <workItem from="1736385719118" duration="26018000" />
     </task>
     <servers />
   </component>

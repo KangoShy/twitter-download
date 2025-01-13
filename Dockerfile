@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/sudoom/python:3.12.8
+FROM python:3.12.8
 
 WORKDIR /usr/src/app
 ENV PROFILE pro

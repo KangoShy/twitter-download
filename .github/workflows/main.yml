@@ -12,6 +12,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: abplanning/xvideos-download:latest
+
       - name: Deploy to server via SSH
         uses: appleboy/ssh-action@v0.1.8
         with:
@@ -20,9 +36,6 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
           script: |
-            docker build -t xvideos-download .
-            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-            docker tag xvideos-download abplanning/xvideos-download:latest
-            docker push abplanning/xvideos-download:latest
-            docker rm -f xvideos-download
+            docker pull abplanning/xvideos-download:latest
+            docker rm -f xvideos-download || true
             docker run -d --name xvideos-download -p 8000:8000 abplanning/xvideos-download

@@ -4,12 +4,11 @@ from workflow import main_flow
 router = APIRouter()
 
 
-@router.get("/start")
-def start(address: str, bucket_name: str, blurb: str, area: str, class_tag: str) -> bool:
+@router.get("/import")
+def import_xvideos(address: str, bucket_name: str, blurb: str, area: str, class_tag: str) -> dict:
     """ start execute one task """
-    main_flow.execute(
+    return main_flow.execute(
         address,
         bucket_name,
         main_flow.InsertManage(blurb, area, class_tag)
     )
-    return True

@@ -1,7 +1,7 @@
 @echo off
 
 git add .
-git commit -m "🔔Add push script!"
+git commit -m "Add push script!"
 git pull
 git push
 
